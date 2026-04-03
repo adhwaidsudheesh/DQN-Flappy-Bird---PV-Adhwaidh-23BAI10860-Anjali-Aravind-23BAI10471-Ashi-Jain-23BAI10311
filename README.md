@@ -77,11 +77,3 @@ However, in other games, initialize ϵ to 1 is more reasonable.
 
 During training time, at each time step, the network samples minibatches of size 32 from the replay memory to train on, and performs a gradient step on the loss function described above using the Adam optimization algorithm with a learning rate of 0.000001. After annealing finishes, the network continues to train indefinitely, with ϵ fixed at 0.001.
 
-
-
-## Disclaimer
-This work is highly based on the following repos:
-
-1. [sourabhv/FlapPyBird] (https://github.com/sourabhv/FlapPyBird)
-2. [asrivat1/DeepLearningVideoGames](https://github.com/asrivat1/DeepLearningVideoGames)
-
