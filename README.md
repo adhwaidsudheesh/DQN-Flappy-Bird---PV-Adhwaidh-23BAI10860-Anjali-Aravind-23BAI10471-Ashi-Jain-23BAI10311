@@ -1,3 +1,13 @@
+# Deep Q Network - Flappy Bird
+
+## Team Members:
+- PV Adhwaidh (23BAI10860)
+- Anjali Aravind (23BAI10471)
+- Ashi Jain (23BAI10311)
+
+
+
+
 # Using Deep Q-Network to Learn How To Play Flappy Bird
 
 <img src="./images/flappy_bird_demp.gif" width="250">
@@ -13,25 +23,12 @@ This project follows the description of the Deep Q Learning algorithm described 
 * pygame
 * OpenCV-Python
 
-## How to Run?
-```
-git clone https://github.com/yenchenlin1994/DeepLearningFlappyBird.git
-cd DeepLearningFlappyBird
-python deep_q_network.py
-```
 
 ## What is Deep Q-Network?
 It is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards.
 
-For those who are interested in deep reinforcement learning, I highly recommend to read the following post:
-
-[Demystifying Deep Reinforcement Learning](http://www.nervanasys.com/demystifying-deep-reinforcement-learning/)
-
 ## Deep Q-Network Algorithm
 
-The pseudo-code for the Deep Q Learning algorithm, as given in [1], can be found below:
-
-```
 Initialize replay memory D to size N
 Initialize action-value function Q with random weights
 for episode = 1, M do
@@ -48,7 +45,6 @@ for episode = 1, M do
         Perform a gradient step on (y_j-Q(s_j,a_j; θ_i))^2 with respect to θ
     end for
 end for
-```
 
 ## Experiments
 
@@ -58,7 +54,7 @@ Since deep Q-network is trained on the raw pixel values observed from the game s
 <img src="./images/preprocess.png" width="450">
 
 #### Network Architecture
-According to [1], I first preprocessed the game screens with following steps:
+According to , I first preprocessed the game screens with following steps:
 
 1. Convert image to grayscale
 2. Resize image to 80x80
@@ -81,31 +77,7 @@ However, in other games, initialize ϵ to 1 is more reasonable.
 
 During training time, at each time step, the network samples minibatches of size 32 from the replay memory to train on, and performs a gradient step on the loss function described above using the Adam optimization algorithm with a learning rate of 0.000001. After annealing finishes, the network continues to train indefinitely, with ϵ fixed at 0.001.
 
-## FAQ
 
-#### Checkpoint not found
-Change [first line of `saved_networks/checkpoint`](https://github.com/yenchenlin1994/DeepLearningFlappyBird/blob/master/saved_networks/checkpoint#L1) to 
-
-`model_checkpoint_path: "saved_networks/bird-dqn-2920000"`
-
-#### How to reproduce?
-1. Comment out [these lines](https://github.com/yenchenlin1994/DeepLearningFlappyBird/blob/master/deep_q_network.py#L108-L112)
-
-2. Modify `deep_q_network.py`'s parameter as follow:
-```python
-OBSERVE = 10000
-EXPLORE = 3000000
-FINAL_EPSILON = 0.0001
-INITIAL_EPSILON = 0.1
-```
-
-## References
-
-[1] Mnih Volodymyr, Koray Kavukcuoglu, David Silver, Andrei A. Rusu, Joel Veness, Marc G. Bellemare, Alex Graves, Martin Riedmiller, Andreas K. Fidjeland, Georg Ostrovski, Stig Petersen, Charles Beattie, Amir Sadik, Ioannis Antonoglou, Helen King, Dharshan Kumaran, Daan Wierstra, Shane Legg, and Demis Hassabis. **Human-level Control through Deep Reinforcement Learning**. Nature, 529-33, 2015.
-
-[2] Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis Antonoglou, Daan Wierstra, and Martin Riedmiller. **Playing Atari with Deep Reinforcement Learning**. NIPS, Deep Learning workshop
-
-[3] Kevin Chen. **Deep Reinforcement Learning for Flappy Bird** [Report](http://cs229.stanford.edu/proj2015/362_report.pdf) | [Youtube result](https://youtu.be/9WKBzTUsPKc)
 
 ## Disclaimer
 This work is highly based on the following repos:
